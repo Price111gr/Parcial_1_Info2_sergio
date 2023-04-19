@@ -50,9 +50,9 @@ int main() {
         cout << "6-> 16-18" << endl;
         cin >> hora;
 
-        if (horario[dia][hora][0] == ' ') {
+        if (horario[hora][dia][0] == ' ') {
             cout << "Ingresa el codigo de la materia: ";
-            cin >> horario[dia][hora];
+            cin >> horario[hora][dia];
             cout << endl;
 
             imprimir(horario);
