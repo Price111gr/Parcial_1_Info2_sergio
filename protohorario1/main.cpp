@@ -6,7 +6,7 @@ void imprimir(char*** horario);
 void llenar(char*** horario);
 
 int main() {
-    int n = 2, dia = 0, hora = 0;
+    int  dia = 0, hora = 0;
     char eleccion = ' ';
     char ***horario = nullptr;
     horario = new char**[7];
@@ -64,7 +64,6 @@ int main() {
         cout << "\nEl usuario ha sido agregado. Presiona cualquier tecla para agregar otro usuario\no '*' para terminar: ";
         cin >> eleccion;
         cout << endl;
-        n++;
     } while (eleccion != '*');
 
     for (int i = 0; i < 7; i++) {
