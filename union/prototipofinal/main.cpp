@@ -64,38 +64,32 @@ int main()
 
         Materias[i][0] = new char[8];
 
-        cout<<"Ingrese el codigo de la materia ["<<i+1<<"] : ";
-        cin>>Materias[i][0];
 
-       /* if(i>0){
 
-            H=true;
+        if(i>0){
+            bool H = true;
 
-            while(H!=false){
-
-                cout<<"Ingrese el codigo de la materia ["<<i+1<<"] : ";
-                cin>>Materias[i][0];
+            while(H){
+                cout << "Ingrese el codigo de la materia ["<<i+1<<"]: ";
+                cin >> Materias[i][0];
 
                 int a = conversor(Materias[i][0]);
 
-
-                for(int k = 0; k<i; k++){
+                H = false;
+                for(int k = 0; k < i; k++){
                     int b = conversor(Materias[k][0]);
-                    if(a==b){
-                        cout<<"La materia ya fue ingresada, intente otra "<<endl;
-                        H=true;
+                    if(a == b){
+                        cout << "La materia ya fue ingresada, intente otra." << endl;
+                        H = true;
+                        break; // Salir del ciclo for
                     }
-                    else{
-                        H=false;
-                    }
-
                 }
-
             }
         }
         else{
-
-        }*/
+            cout<<"Ingrese el codigo de la materia ["<<i+1<<"] : ";
+            cin>>Materias[i][0];
+        }
 
         cout<<endl;
         Materias[i][1] = new char[25];
