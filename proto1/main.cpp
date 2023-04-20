@@ -4,7 +4,8 @@
 
 void imprimirmate(char ***Materias, int Num);
 void liberador(char ***Materias, int Num);
-bool comparechars(char*** s1, char s2, int Num);
+//bool comparechars(char*** s1, char s2, int Num);
+void formatotxt(char ***Materias, int Num, int paso, char *Caja);
 
 
 using namespace std;
@@ -84,8 +85,21 @@ int main(void)
     }
 
     ////////////////////Imprimir Datos///////////////////////
-
     imprimirmate(Materias, Num);
+    char *Caja=new char [50];
+    int paso=-1;
+    ////////////////Pasar datos a Arreglo Lineal//////////////
+
+    formatotxt(Materias, Num, paso, Caja);
+    //////////////////Escribimos el Archivo///////////////////
+
+    Archivo.open(documento);
+    Archivo <<Caja ;
+    Archivo.close();
+
+
+
+
     liberador(Materias, Num);
 
 }
@@ -101,14 +115,14 @@ int main(void)
 
 
 
-bool Comparar(char** Materias, char cad[], int c){
+/*bool Comparar(char** Materias, char cad[], int c){
     for(int i = 1; i < c-1; i++){
         if(Materias[i][0]==Materias[i+1][0] || Materias[i][0]==Materias[i-1][0]){
             return true;
         }
     }
     return false;
-}
+}*/
 
 void imprimirmate(char ***Materias, int Num){
     for (int a = 0; a < Num; a++) {
@@ -134,7 +148,7 @@ void liberador(char ***Materias, int Num){
     Materias=nullptr;
 }
 
-bool comparechars(char*** s1, char s2, int Num) {
+/*bool comparechars(char*** s1, char s2, int Num) {
     for (int i = 0; i < Num; i++) {
 
         if (*s1[i][0] == s2) {
@@ -143,8 +157,26 @@ bool comparechars(char*** s1, char s2, int Num) {
 
     }
     return false;
-}
+}*/
 
+void formatotxt(char ***Materias, int Num, int paso, char *Caja){
+    for (int a = 0; a < Num; a++) {
+        for (int b = 0; b < 5; b++) {
+            for (int c = 0; c < 25; c++) {
+                if (Materias[a][b][c]=='\0') break;
+
+                if (Materias[a][b][c]!='\0'){
+                    paso++;
+                    Caja[paso]= Materias[a][b][c];
+                }
+            }
+            paso++;
+            Caja[paso]='|';
+        }
+        paso++;
+        Caja[paso]='\n';
+    }
+}
 
 
 
