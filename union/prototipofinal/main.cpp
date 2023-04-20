@@ -64,6 +64,9 @@ int main()
 
         Materias[i][0] = new char[8];
 
+        cout<<"Ingrese el codigo de la materia ["<<i+1<<"] : ";
+        cin>>Materias[i][0];
+
        /* if(i>0){
 
             H=true;
@@ -91,8 +94,7 @@ int main()
             }
         }
         else{
-            cout<<"Ingrese el codigo de la materia ["<<i+1<<"] : ";
-            cin>>Materias[i][0];
+
         }*/
 
         cout<<endl;
@@ -117,7 +119,8 @@ int main()
     ////////////////////Imprimir Datos///////////////////////
 
     imprimir(Materias, Num, 5, 25);
-    char *almacen=new char [50];
+    cout<<endl;
+    char *almacen=new char [500];
     int paso=-1;
     ////////////////Pasar datos a Arreglo Lineal//////////////
 
@@ -128,14 +131,13 @@ int main()
     Archivo <<almacen ;
     Archivo.close();
 
-    //////////////////Borrar memoria reservada///////////////
 
 
 
-    ///////////////////Fin de la ejecucion///////////////////
-    ///
-    ///
-    //crear matriz para horarios
+
+
+
+    /////crear matriz para horarios////////
     horario = new char**[14];
     for (int i = 0; i < 14; i++) {
         horario[i] = new char*[6];
@@ -150,6 +152,7 @@ int main()
     imprimir(horario, 14, 6, 10);
 
     do {
+
         cout << "-----------------CRONOGRAMA--------------------" << endl;
         cout << "Ingrese el primer dia que desea registrar: " << endl;
         cout << "1-Lunes" << endl;
@@ -182,17 +185,20 @@ int main()
         cin >> hora;
 
         if (horario[hora][dia][0] == ' ' && horario[hora][dia2][0] == ' ') {
+            cout<<endl;
+            imprimir(Materias, Num, 5, 25);
+            cout<<endl;
             cout << "Ingresa el codigo de la materia: ";
             cin >> horario[hora][dia];
 
             horario[hora+1][dia]=horario[hora][dia];
-            horario[hora+2][dia]=horario[hora][dia];
+
 
             rellenarArreglo(horario[hora][dia], 10,  ' ');
 
             horario[hora][dia2] = horario[hora][dia];
             horario[hora+1][dia2]= horario[hora][dia2];
-            horario[hora+2][dia2]= horario[hora][dia2];
+
 
             cout << endl;
             imprimir(horario, 14, 6, 10);
@@ -349,7 +355,7 @@ int main()
 
     }
 
-
+    //////////////////Borrar memoria reservada///////////////
     liberador(Materias, horario, almacenhorario, almacen, Num);
 }
 
@@ -420,13 +426,14 @@ void random(char ***horario, char ***Materias, int Num){
                 Q++;
                 horario[hora][dia] = Materias[i][0];
                 rellenarArreglo(horario[hora][dia], 10,  ' ');
-                imprimir(horario, 14, 6, 10);
+
 
             }
 
         }
 
     }
+    imprimir(horario, 14, 6, 10);
 
 }
 
