@@ -54,8 +54,6 @@ int main()
 
         Materias[i][0] = new char[8];
 
-
-
         if(i>0){
             bool H = true;
 
